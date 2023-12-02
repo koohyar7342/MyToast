@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    //couple colors
+    <color name="pass_green_dark">#44692e</color>
+    <color name="pass_green_light">#a5cd8e</color>
+    <color name="pass_blue_dark">#3D5AFE</color>
+    <color name="pass_blue_dark_alpha_cc">#cc3D5AFE</color>
+    <color name="pass_blue_light">#9dceff</color>
+    <color name="pass_pink_dark">#ff1744</color>
+    <color name="pass_pink_dark_alpha_cc">#ccff1744</color>
+    <color name="pass_pink_light">#ffa1af</color>
+    <color name="pass_purple_dark_alpha_cc">#530F8E44</color>
+    <color name="pass_purple_dark">#530F8E</color>
+    <color name="pass_purple_light">#df9bff</color>
+    <color name="pass_brown_dark">#997953</color>
+    <color name="pass_brown_dark_alpha_cc">#cc997953</color>
+    <color name="pass_brown_light">#cfaf89</color>
+    //
+</resources>

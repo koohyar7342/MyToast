@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/alert_dialog_main_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginHorizontal="32dp"
+
+    android:background="@android:color/black"
+    android:clickable="false"
+    android:focusable="false"
+    app:cardBackgroundColor="@color/primaryDarkColor"
+    app:cardCornerRadius="16dp"
+    app:contentPaddingRight="16dp"
+    app:contentPaddingLeft="16dp"
+    app:cardElevation="0dp"
+>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingVertical="16dp"
+
+        >
+
+
+        <TextView
+            android:id="@+id/alert_dialog_view_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
+            android:textColor="@android:color/white"
+            tools:text="@string/title_password_generator_activity" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/alert_dialog_icon"
+            android:layout_width="wrap_content"
+            android:visibility="visible"
+            android:layout_height="match_parent"
+            android:paddingLeft="4dp"
+            android:layout_gravity="center_vertical"
+            android:tint="@android:color/white"
+
+            app:srcCompat="@drawable/ic_credit_card_black_24dp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.cardview.widget.CardView>

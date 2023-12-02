@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="pass_green_dark">#44692e</color>
+    <color name="pass_green_light">#a5cd8e</color>
+    <color name="pass_blue_dark">#3D5AFE</color>
+    <color name="pass_blue_light">#9dceff</color>
+    <color name="pass_pink_dark">#ff1744</color>
+    <color name="pass_pink_light">#ffa1af</color>
+
+</resources>
