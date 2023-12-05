@@ -6,44 +6,55 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
+    android:layout_marginVertical="32dp"
     android:layout_marginHorizontal="32dp"
 
-    android:background="@android:color/black"
+    android:outlineSpotShadowColor="#000000"
+
     android:clickable="false"
     android:focusable="false"
-    app:cardBackgroundColor="@color/primaryDarkColor"
     app:cardCornerRadius="16dp"
-    app:contentPaddingRight="16dp"
-    app:contentPaddingLeft="16dp"
-    app:cardElevation="0dp"
+    app:cardElevation="12dp"
+
 >
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:paddingVertical="16dp"
+        android:paddingVertical="8dp"
+        android:orientation="horizontal"
+
+
+        android:background="@drawable/bg_stroke"
+        android:layout_gravity="center_horizontal"
 
         >
 
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/alert_dialog_view_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="right|center_vertical"
+            android:gravity="center_vertical"
+            android:layout_weight="0.9"
+            android:ellipsize="end"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:padding="8dp"
             android:textColor="@android:color/white"
-            tools:text="@string/title_password_generator_activity" />
+            tools:text="title_password_generator_activity" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/alert_dialog_icon"
             android:layout_width="wrap_content"
-            android:visibility="visible"
             android:layout_height="match_parent"
-            android:paddingLeft="4dp"
-            android:layout_gravity="center_vertical"
-            android:tint="@android:color/white"
+            android:layout_weight="0.1"
+            android:layout_gravity="top"
 
-            app:srcCompat="@drawable/ic_credit_card_black_24dp" />
+            android:tint="@android:color/white"
+            app:srcCompat="@drawable/outline_info_24" />
+
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

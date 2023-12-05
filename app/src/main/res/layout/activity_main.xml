@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:ignore="HardcodedText,RtlSymmetry,UnusedAttribute"
     tools:context=".MainActivity">
 
@@ -18,12 +19,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_go_to_baazar_page"
+            android:id="@+id/copy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_bazaar_button"
+            android:background="@drawable/bg_copy_button"
             android:drawableEnd="@drawable/round_content_copy_24"
             android:drawablePadding="8dp"
             android:drawableTint="@color/pass_blue_dark"
@@ -40,20 +41,16 @@
             android:textColor="@color/pass_blue_dark"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:backgroundTint="@null"
-            app:iconTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restore_progress"
+            app:iconTint="@android:color/white"
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/about_email_to_me"
+            android:id="@+id/done"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
 
-            android:background="@drawable/bg_email_to_me_button"
+            android:background="@drawable/bg_done_button"
             android:drawableEnd="@drawable/round_done_24"
             android:drawablePadding="8dp"
             android:drawableTint="@color/pass_green_dark"
@@ -73,18 +70,15 @@
             android:textStyle="bold"
             app:backgroundTint="@null"
             app:iconTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restore_progress"
              />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/about_goto_mysite"
+            android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
 
-            android:background="@drawable/bg_goto_mysite_button"
+            android:background="@drawable/bg_info_button"
             android:drawableEnd="@drawable/outline_info_24"
             android:drawablePadding="8dp"
             android:drawableTint="@android:color/black"
@@ -104,18 +98,15 @@
             android:textStyle="bold"
             app:backgroundTint="@null"
             app:iconTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restore_progress"
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/about_rules_announcement"
+            android:id="@+id/error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
 
-            android:background="@drawable/bg_rules_button"
+            android:background="@drawable/bg_error_button"
             android:drawableEnd="@drawable/round_error_24"
             android:drawablePadding="8dp"
             android:drawableTint="@color/pass_pink_dark"
@@ -135,11 +126,56 @@
             android:textStyle="bold"
             app:backgroundTint="@null"
             app:iconTint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/restore_progress"
-            tools:ignore="RtlSymmetry,UnusedAttribute" />
+             />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/default_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_default_button"
+            android:drawablePadding="8dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+
+
+            android:paddingVertical="4dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="8dp"
+            android:text="default"
+            android:textAllCaps="true"
+            android:textColor="@color/pass_purple_dark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:iconTint="@color/white"
+            />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/toast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/black"
+            android:drawablePadding="8dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+
+
+            android:paddingVertical="4dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="8dp"
+            android:text="toast"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:iconTint="@color/white"
+            />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

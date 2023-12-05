@@ -4,10 +4,10 @@ import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatDialog
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.res.ResourcesCompat
 
 object DialoguesUtils {
     enum class DialogPosition {
@@ -64,7 +65,7 @@ object DialoguesUtils {
         message: String,
         type: DialogType = DialogType.DEFAULT,
         delayMillis: Long = 2500,
-        defaultPosition: DialogPosition = DialogPosition.BOTTOM
+        position: DialogPosition = DialogPosition.BOTTOM
 
     ) {
 
@@ -72,11 +73,12 @@ object DialoguesUtils {
         val dialogView =
             LayoutInflater.from(context)
                 .inflate(R.layout.dialog_snack_message, FrameLayout(context))
-        dialogView.findViewById<TextView>(R.id.alert_dialog_view_textView).text = message
+        val textView = dialogView.findViewById<TextView>(R.id.alert_dialog_view_textView)
+        textView.text = message
         val icon = dialogView.findViewById<ImageView>(R.id.alert_dialog_icon)
         val mainLayout = dialogView.findViewById<CardView>(R.id.alert_dialog_main_layout)
 
-        //dialogView.setBackgroundResource(R.color.pass_blue_dark)
+
 
 
         val dialog = Dialog(context, R.style.CustomMaterialDialog)
@@ -100,6 +102,7 @@ object DialoguesUtils {
                 // if (dialogPosition == DialogPosition.BOTTOM)
                 // dialogPosition = DialogPosition.CENTER
 
+
             }
 
             DialogType.ERROR -> {
@@ -112,7 +115,7 @@ object DialoguesUtils {
 
             DialogType.COPY -> {
                 icon.setImageResource(R.drawable.round_content_copy_24)
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.pass_green_dark))
+                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_copy_background_color))
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_slide_from_bottom
 
 
@@ -145,10 +148,11 @@ object DialoguesUtils {
         )
         val layoutParams: WindowManager.LayoutParams = dialog.window!!.attributes
         val physicalHeightPx = context.physicalScreenRectPx.height()
+        val physicalWidthPx = context.physicalScreenRectPx.width()
         layoutParams.x = 0
 
 
-        when (defaultPosition) {
+        when (position) {
             DialogPosition.BOTTOM -> {
 
                 layoutParams.y = physicalHeightPx / 3
@@ -174,8 +178,11 @@ object DialoguesUtils {
         //hideNavigationBarAndOpeningDialog1(context,dialog)
         dialog.window!!.setLayout(
             ConstraintLayout.LayoutParams.WRAP_CONTENT,
+            //physicalWidthPx*2/3,
+            //400,
             ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
+
 
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -188,6 +195,9 @@ object DialoguesUtils {
     private fun getColor(context: Context, id: Int): Int {
           return  context.resources.getColor(id, null)
 
+    }
+    private fun getDrawable(context: Context, id: Int):Drawable{
+        return  ResourcesCompat.getDrawable(context.resources,id,context.theme)!!
     }
 
 }
