@@ -2,7 +2,9 @@ package com.koohyar.mytoast
 
 import android.app.Dialog
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -13,9 +15,11 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDialog
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.widget.ImageViewCompat
 
 object DialoguesUtils {
     enum class DialogPosition {
@@ -75,7 +79,8 @@ object DialoguesUtils {
                 .inflate(R.layout.dialog_snack_message, FrameLayout(context))
         val textView = dialogView.findViewById<TextView>(R.id.alert_dialog_view_textView)
         textView.text = message
-        val icon = dialogView.findViewById<ImageView>(R.id.alert_dialog_icon)
+        textView.setTextColor(getColor(context,R.color.mt_text_color))
+        val icon = dialogView.findViewById<AppCompatImageView>(R.id.alert_dialog_icon)
         val mainLayout = dialogView.findViewById<CardView>(R.id.alert_dialog_main_layout)
 
 
@@ -90,24 +95,22 @@ object DialoguesUtils {
         when (type) {
             DialogType.DEFAULT -> {
                 icon.visibility = View.GONE
-                mainLayout.setCardBackgroundColor(getColor(context, android.R.color.darker_gray))
+                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_default_background_color))
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_scale_in_fade_out
+
 
             }
 
             DialogType.INFO -> {
                 icon.setImageResource(R.drawable.outline_info_24)
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_scale_in_fade_out
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.pass_blue_dark))
-                // if (dialogPosition == DialogPosition.BOTTOM)
-                // dialogPosition = DialogPosition.CENTER
-
+                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_info_background_color))
 
             }
 
             DialogType.ERROR -> {
                 icon.setImageResource(R.drawable.round_error_24)
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.pass_pink_dark))
+                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_error_background_color))
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_slide_error
 
 
@@ -129,8 +132,9 @@ object DialoguesUtils {
 
             }
         }
-
-
+        //icon.setColorFilter(R.color.mt_icon_tint, PorterDuff.Mode.CLEAR)
+        //icon.setColorFilter(R.color.mt_icon_tint, PorterDuff.Mode.SRC_IN)
+        ImageViewCompat.setImageTintList(icon, ColorStateList.valueOf(getColor(context,R.color.mt_icon_tint)));
 
         dialog.setCanceledOnTouchOutside(true)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

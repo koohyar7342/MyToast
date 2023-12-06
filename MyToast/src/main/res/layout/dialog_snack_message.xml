@@ -44,14 +44,15 @@
             android:textColor="@android:color/white"
             tools:text="title_password_generator_activity" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/alert_dialog_icon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.1"
             android:layout_gravity="top"
+            android:background="@null"
 
-            android:tint="@android:color/white"
+            tools:tint="@android:color/white"
             app:srcCompat="@drawable/outline_info_24" />
 
 
