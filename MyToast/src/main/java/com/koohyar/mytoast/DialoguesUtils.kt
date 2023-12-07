@@ -3,8 +3,8 @@ package com.koohyar.mytoast
 import android.app.Dialog
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Configuration
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -12,7 +12,6 @@ import android.os.Handler
 import android.os.Looper
 import android.view.*
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.widget.AppCompatImageView
@@ -20,6 +19,9 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.ImageViewCompat
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 
 object DialoguesUtils {
     enum class DialogPosition {
@@ -27,7 +29,7 @@ object DialoguesUtils {
     }
 
     enum class DialogType {
-        DEFAULT, INFO, ERROR, COPY,SUCCESS
+        DEFAULT, INFO, ERROR, COPY, SUCCESS
     }
 
     fun hideNavigationBarAndOpeningDialog(dialog: AppCompatDialog) {
@@ -62,16 +64,28 @@ object DialoguesUtils {
         dialog.show()
         dialog.window!!.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
     }
+    class DialogDismissLifecycleObserver( private var dialog: Dialog? ) : DefaultLifecycleObserver {
+        override fun onPause(owner: LifecycleOwner) {
+            super.onPause(owner)
+            dialog?.dismiss()
+            dialog = null
+        }
 
+    }
 
-    fun showAlertDialogWithJustMessage(
+    fun show(
         context: Context,
         message: String,
+
         type: DialogType = DialogType.DEFAULT,
         delayMillis: Long = 2500,
-        position: DialogPosition = DialogPosition.BOTTOM
+        position: DialogPosition = DialogPosition.BOTTOM,
+        lifecycle: Lifecycle? = null,
 
     ) {
+        val isDarkMode =
+            (context.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES)
+
 
 
         val dialogView =
@@ -79,23 +93,24 @@ object DialoguesUtils {
                 .inflate(R.layout.dialog_snack_message, FrameLayout(context))
         val textView = dialogView.findViewById<TextView>(R.id.alert_dialog_view_textView)
         textView.text = message
-        textView.setTextColor(getColor(context,R.color.mt_text_color))
+        textView.setTextColor(getColor(context, R.color.mt_text_color))
         val icon = dialogView.findViewById<AppCompatImageView>(R.id.alert_dialog_icon)
         val mainLayout = dialogView.findViewById<CardView>(R.id.alert_dialog_main_layout)
-
-
-
-
         val dialog = Dialog(context, R.style.CustomMaterialDialog)
-
         dialog.setContentView(dialogView)
-
-
-
+        ImageViewCompat.setImageTintList(
+            icon,
+            ColorStateList.valueOf(getColor(context, R.color.mt_icon_tint))
+        )
         when (type) {
             DialogType.DEFAULT -> {
                 icon.visibility = View.GONE
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_default_background_color))
+                mainLayout.setCardBackgroundColor(
+                    getColor(
+                        context,
+                        R.color.mt_default_background_color
+                    )
+                )
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_scale_in_fade_out
 
 
@@ -104,13 +119,23 @@ object DialoguesUtils {
             DialogType.INFO -> {
                 icon.setImageResource(R.drawable.outline_info_24)
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_scale_in_fade_out
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_info_background_color))
+                mainLayout.setCardBackgroundColor(
+                    getColor(
+                        context,
+                        R.color.mt_info_background_color
+                    )
+                )
 
             }
 
             DialogType.ERROR -> {
                 icon.setImageResource(R.drawable.round_error_24)
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_error_background_color))
+                mainLayout.setCardBackgroundColor(
+                    getColor(
+                        context,
+                        R.color.mt_error_background_color
+                    )
+                )
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_slide_error
 
 
@@ -118,7 +143,12 @@ object DialoguesUtils {
 
             DialogType.COPY -> {
                 icon.setImageResource(R.drawable.round_content_copy_24)
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.mt_copy_background_color))
+                mainLayout.setCardBackgroundColor(
+                    getColor(
+                        context,
+                        R.color.mt_copy_background_color
+                    )
+                )
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_slide_from_bottom
 
 
@@ -126,26 +156,30 @@ object DialoguesUtils {
 
             DialogType.SUCCESS -> {
                 icon.setImageResource(R.drawable.round_done_24)
-                mainLayout.setCardBackgroundColor(getColor(context, R.color.pass_green_dark))
+                mainLayout.setCardBackgroundColor(
+                    getColor(
+                        context,
+                        R.color.mt_success_background_color
+                    )
+                )
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_scale_in_fade_out
 
 
             }
         }
-        //icon.setColorFilter(R.color.mt_icon_tint, PorterDuff.Mode.CLEAR)
-        //icon.setColorFilter(R.color.mt_icon_tint, PorterDuff.Mode.SRC_IN)
-        ImageViewCompat.setImageTintList(icon, ColorStateList.valueOf(getColor(context,R.color.mt_icon_tint)));
+
+
 
         dialog.setCanceledOnTouchOutside(true)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.window!!.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-        );
+        )
         dialog.window!!.setFlags(
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-        );
+        )
         dialog.window!!.setFlags(
             WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH,
             WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH
@@ -187,21 +221,34 @@ object DialoguesUtils {
             ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
 
+        lifecycle?.addObserver( DialogDismissLifecycleObserver( dialog ) )
 
 
         Handler(Looper.getMainLooper()).postDelayed({
             //Log.d("showAlertDialog", "dismiss")
+            /*        try {
+                        currentDialog?.dismiss()
+
+                    }catch (e:Exception){
+                        Log.d(DialoguesUtils.toString(),e.toString())
+                    }*/
             dialog.dismiss()
+
+     /*      if (!(context as Activity).isDestroyed){
+               dialog.dismiss()
+           }*/
 
         }, delayMillis)
 
     }
+
     private fun getColor(context: Context, id: Int): Int {
-          return  context.resources.getColor(id, null)
+        return context.resources.getColor(id, context.theme)
 
     }
-    private fun getDrawable(context: Context, id: Int):Drawable{
-        return  ResourcesCompat.getDrawable(context.resources,id,context.theme)!!
+
+    private fun getDrawable(context: Context, id: Int): Drawable {
+        return ResourcesCompat.getDrawable(context.resources, id, context.theme)!!
     }
 
 }
