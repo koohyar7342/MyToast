@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             MyToast.show(
                 this, "INFO",
                 MyToast.DialogType.INFO,
-                2500, MyToast.DialogPosition.BOTTOM
+                2500, MyToast.DialogPosition.TOP
             )
         }
         binding.done.setOnClickListener {
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
             MyToast.show(
                 this, "ERROR",
                 MyToast.DialogType.ERROR,
-                2500, MyToast.DialogPosition.BOTTOM
+                2500, MyToast.DialogPosition.CENTER
             )
         }
         binding.toast.setOnClickListener {
