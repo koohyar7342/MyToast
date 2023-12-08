@@ -61,9 +61,12 @@ class MainActivity : AppCompatActivity() {
         binding.error.setOnClickListener {
 
             MyToast.show(
-                this, "ERROR",
-                MyToast.DialogType.ERROR,
-                2500, MyToast.DialogPosition.CENTER
+                context = this,
+                message = "the toast message",
+                type = MyToast.DialogType.ERROR, // DEFAULT,INFO,SUCCESS,COPY
+                delayMillis = 2500, // Toast duration in Millisecond
+                position = MyToast.DialogPosition.CENTER, // CENTER, BOTTOM, TOP
+                lifecycle= lifecycle // for dismissing toast when lifecycleOwner finished
             )
         }
         binding.toast.setOnClickListener {
