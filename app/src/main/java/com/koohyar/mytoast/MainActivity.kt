@@ -22,49 +22,48 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.copy.setOnClickListener {
-            Handler(Looper.getMainLooper()).postDelayed({ finish() }, 500)
-            DialoguesUtils.show(
+            MyToast.show(
                 this, "copied",
 
-                DialoguesUtils.DialogType.COPY,
-                2500, DialoguesUtils.DialogPosition.BOTTOM,
+                MyToast.DialogType.COPY,
+                2500, MyToast.DialogPosition.BOTTOM,
                 lifecycle,
 
             )
-            DialoguesUtils.show(this, "copied")
+            //MyToast.show(this, "copied")
         }
         binding.defaultBt.setOnClickListener {
 
-            DialoguesUtils.show(
+            MyToast.show(
                 this, "DEFAULT",
-                DialoguesUtils.DialogType.DEFAULT,
-                2500, DialoguesUtils.DialogPosition.BOTTOM
+                MyToast.DialogType.DEFAULT,
+                2500, MyToast.DialogPosition.BOTTOM
             )
         }
         binding.info.setOnClickListener {
 
-            DialoguesUtils.show(
+            MyToast.show(
                 this, "INFO",
-                DialoguesUtils.DialogType.INFO,
-                2500, DialoguesUtils.DialogPosition.BOTTOM
+                MyToast.DialogType.INFO,
+                2500, MyToast.DialogPosition.BOTTOM
             )
         }
         binding.done.setOnClickListener {
 
-            DialoguesUtils.show(
+            MyToast.show(
                 this,
                 "موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز",
-                DialoguesUtils.DialogType.SUCCESS,
+                MyToast.DialogType.SUCCESS,
                 2500,
-                DialoguesUtils.DialogPosition.BOTTOM
+                MyToast.DialogPosition.BOTTOM
             )
         }
         binding.error.setOnClickListener {
 
-            DialoguesUtils.show(
+            MyToast.show(
                 this, "ERROR",
-                DialoguesUtils.DialogType.ERROR,
-                2500, DialoguesUtils.DialogPosition.BOTTOM
+                MyToast.DialogType.ERROR,
+                2500, MyToast.DialogPosition.BOTTOM
             )
         }
         binding.toast.setOnClickListener {

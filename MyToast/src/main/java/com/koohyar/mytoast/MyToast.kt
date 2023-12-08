@@ -23,7 +23,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 
-object DialoguesUtils {
+object MyToast {
     enum class DialogPosition {
         TOP, CENTER, BOTTOM
     }
