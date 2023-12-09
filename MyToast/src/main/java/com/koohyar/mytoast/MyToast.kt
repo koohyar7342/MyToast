@@ -24,11 +24,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 
 object MyToast {
-    enum class DialogPosition {
+    enum class ToastPosition {
         TOP, CENTER, BOTTOM
     }
 
-    enum class DialogType {
+    enum class ToastType {
         DEFAULT, INFO, ERROR, COPY, SUCCESS
     }
 
@@ -77,12 +77,12 @@ object MyToast {
         context: Context,
         message: String,
 
-        type: DialogType = DialogType.DEFAULT,
+        type: ToastType = ToastType.DEFAULT,
         delayMillis: Long = 2500,
-        position: DialogPosition = DialogPosition.BOTTOM,
+        position: ToastPosition = ToastPosition.BOTTOM,
         lifecycle: Lifecycle? = null,
 
-    ) {
+        ) {
         val isDarkMode =
             (context.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES)
 
@@ -103,7 +103,7 @@ object MyToast {
             ColorStateList.valueOf(getColor(context, R.color.mt_icon_tint))
         )
         when (type) {
-            DialogType.DEFAULT -> {
+            ToastType.DEFAULT -> {
                 icon.visibility = View.GONE
                 mainLayout.setCardBackgroundColor(
                     getColor(
@@ -116,7 +116,7 @@ object MyToast {
 
             }
 
-            DialogType.INFO -> {
+            ToastType.INFO -> {
                 icon.setImageResource(R.drawable.outline_info_24)
                 dialog.window?.attributes!!.windowAnimations = R.style.animation_scale_in_fade_out
                 mainLayout.setCardBackgroundColor(
@@ -128,7 +128,7 @@ object MyToast {
 
             }
 
-            DialogType.ERROR -> {
+            ToastType.ERROR -> {
                 icon.setImageResource(R.drawable.round_error_24)
                 mainLayout.setCardBackgroundColor(
                     getColor(
@@ -141,7 +141,7 @@ object MyToast {
 
             }
 
-            DialogType.COPY -> {
+            ToastType.COPY -> {
                 icon.setImageResource(R.drawable.round_content_copy_24)
                 mainLayout.setCardBackgroundColor(
                     getColor(
@@ -154,7 +154,7 @@ object MyToast {
 
             }
 
-            DialogType.SUCCESS -> {
+            ToastType.SUCCESS -> {
                 icon.setImageResource(R.drawable.round_done_24)
                 mainLayout.setCardBackgroundColor(
                     getColor(
@@ -191,16 +191,16 @@ object MyToast {
 
 
         when (position) {
-            DialogPosition.BOTTOM -> {
+            ToastPosition.BOTTOM -> {
 
                 layoutParams.y = physicalHeightPx / 3
             }
 
-            DialogPosition.CENTER -> {
+            ToastPosition.CENTER -> {
                 layoutParams.y = 0
             }
 
-            DialogPosition.TOP -> {
+            ToastPosition.TOP -> {
                 layoutParams.y = physicalHeightPx / (-3)
             }
         }

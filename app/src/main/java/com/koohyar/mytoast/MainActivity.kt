@@ -2,8 +2,6 @@ package com.koohyar.mytoast
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.widget.Toast
 import com.koohyar.mytoast.databinding.ActivityMainBinding
 
@@ -25,8 +23,8 @@ class MainActivity : AppCompatActivity() {
             MyToast.show(
                 this, "copied",
 
-                MyToast.DialogType.COPY,
-                2500, MyToast.DialogPosition.BOTTOM,
+                MyToast.ToastType.COPY,
+                2500, MyToast.ToastPosition.BOTTOM,
                 lifecycle,
 
             )
@@ -36,16 +34,16 @@ class MainActivity : AppCompatActivity() {
 
             MyToast.show(
                 this, "DEFAULT",
-                MyToast.DialogType.DEFAULT,
-                2500, MyToast.DialogPosition.BOTTOM
+                MyToast.ToastType.DEFAULT,
+                2500, MyToast.ToastPosition.BOTTOM
             )
         }
         binding.info.setOnClickListener {
 
             MyToast.show(
                 this, "INFO",
-                MyToast.DialogType.INFO,
-                2500, MyToast.DialogPosition.TOP
+                MyToast.ToastType.INFO,
+                2500, MyToast.ToastPosition.TOP
             )
         }
         binding.done.setOnClickListener {
@@ -53,9 +51,9 @@ class MainActivity : AppCompatActivity() {
             MyToast.show(
                 this,
                 "موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز موفقیت آمیز",
-                MyToast.DialogType.SUCCESS,
+                MyToast.ToastType.SUCCESS,
                 2500,
-                MyToast.DialogPosition.BOTTOM
+                MyToast.ToastPosition.BOTTOM
             )
         }
         binding.error.setOnClickListener {
@@ -63,9 +61,9 @@ class MainActivity : AppCompatActivity() {
             MyToast.show(
                 context = this,
                 message = "the toast message",
-                type = MyToast.DialogType.ERROR, // DEFAULT,INFO,SUCCESS,COPY
+                type = MyToast.ToastType.ERROR, // DEFAULT,INFO,SUCCESS,COPY
                 delayMillis = 2500, // Toast duration in Millisecond
-                position = MyToast.DialogPosition.CENTER, // CENTER, BOTTOM, TOP
+                position = MyToast.ToastPosition.CENTER, // CENTER, BOTTOM, TOP
                 lifecycle= lifecycle // for dismissing toast when lifecycleOwner finished
             )
         }
