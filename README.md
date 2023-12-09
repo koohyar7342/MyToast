@@ -35,7 +35,7 @@ dependencies {
 MyToast.show(
     context = this,
     message = "the toast message",
-    type = MyToast.DialogType.ERROR, // DEFAULT,INFO,SUCCESS,COPY
+    type = MyToast.DialogType.ERROR, // DEFAULT, INFO, ERROR, COPY, SUCCESS
     delayMillis = 2500, // Toast duration in Millisecond
     position = MyToast.DialogPosition.CENTER, // CENTER, BOTTOM, TOP
     lifecycle= lifecycle // for dismissing toast when lifecycleOwner finished
