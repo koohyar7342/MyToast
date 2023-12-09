@@ -3,13 +3,13 @@
     >
 
 
-    <color name="mt_copy_background_color" tools:override="true"  >#997953</color>
-    <color name="mt_success_background_color" tools:override="true"  >#44692e</color>
-    <color name="mt_info_background_color" tools:override="true"  >#3D5AFE</color>
-    <color name="mt_error_background_color" tools:override="true"  >#ff1744</color>
-    <color name="mt_default_background_color" tools:override="true"  >#530F8E</color>
-    <color name="mt_text_color" tools:override="true"  >#ffffff</color>
-    <color name="mt_icon_tint" tools:override="true"  >#ffffff</color>
+    <color name="mt_copy_background_color">#997953</color>
+    <color name="mt_success_background_color" >#44692e</color>
+    <color name="mt_info_background_color" >#3D5AFE</color>
+    <color name="mt_error_background_color">#ff1744</color>
+    <color name="mt_default_background_color">#530F8E</color>
+    <color name="mt_text_color" >#ffffff</color>
+    <color name="mt_icon_tint" >#ffffff</color>
 
 
 </resources>
