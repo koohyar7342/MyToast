@@ -6,7 +6,7 @@
 </br>
 
 <p align="center">
-<img src="https://github.com/koohyar7342/MyToast/blob/636497ef770f67081e939c69efb6019d3bc7d23f/mytoast.mp4" width="300"/>
+<img src="https://github.com/koohyar7342/MyToast/blob/0e48a26acbce882f2ceed123486ce1d33f0f9248/myToast.gif" width="250"/>
 </p>
 
 ## Including in your project
@@ -35,7 +35,7 @@ dependencies {
 MyToast.show(
     context = this,
     message = "the toast message",
-    type = MyToast.DialogType.ERROR, // DEFAULT,INFO,SUCCESS,COPY
+    type = MyToast.DialogType.ERROR, // DEFAULT, INFO, ERROR, COPY, SUCCESS
     delayMillis = 2500, // Toast duration in Millisecond
     position = MyToast.DialogPosition.CENTER, // CENTER, BOTTOM, TOP
     lifecycle= lifecycle // for dismissing toast when lifecycleOwner finished
