@@ -6,7 +6,7 @@
 </br>
 
 <p align="center">
-<img src="https://github.com/koohyar7342/MyToast/blob/ee81faf389010ce1f415a7ff062b2a4a18b377ac/myToast.gif" width="250"/>
+<img src="https://github.com/koohyar7342/MyToast/blob/636497ef770f67081e939c69efb6019d3bc7d23f/mytoast.mp4" width="300"/>
 </p>
 
 ## Including in your project
