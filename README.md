@@ -41,6 +41,17 @@ MyToast.show(
     lifecycle= lifecycle // for dismissing toast when lifecycleOwner finished
 )
 ```
+Declare these colors in your app **colors.xml** for changing MyToast default colors:
+```xml
+    <color name="mt_copy_background_color">###</color>
+    <color name="mt_success_background_color" >###</color>
+    <color name="mt_info_background_color" >###</color>
+    <color name="mt_error_background_color">###</color>
+    <color name="mt_default_background_color">###</color>
+    <color name="mt_text_color" >###</color>
+    <color name="mt_icon_tint" >###</color>
+```
+
 
 ## Find this library useful? :heart:
 Support me here __[https://koohyar7342.github.io](https://koohyar7342.github.io)__ <br>
