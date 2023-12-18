@@ -26,7 +26,7 @@ Step 2.Add the dependency below to your **module**'s `build.gradle` file:
 
 ```kotlin
 dependencies {
-  implementation 'com.github.koohyar7342:MyToast:1.0.0'
+  implementation 'com.github.koohyar7342:MyToast:1.0.1'
 }
 ```
 ## How to Use
